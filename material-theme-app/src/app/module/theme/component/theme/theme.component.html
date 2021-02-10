@@ -1,0 +1,110 @@
+<mat-card>
+  <mat-card-title>Theme Switcher</mat-card-title>
+  <mat-card-content>
+    <p>Use the dropdown list or click on the buttons to switch between the different available themes or reset to the default theme.</p>
+    <p>
+      <mat-form-field style="width: 300px">
+        <mat-label>Current theme</mat-label>
+        <mat-select [ngModel]="theme$ | async" (ngModelChange)="onThemeChange($event)">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let theme of themes" [value]="theme">{{ theme }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-button (click)="onDefaultTheme()">Default theme</button>
+      <button mat-button (click)="onNextTheme()">Next theme</button>
+    </p>
+    <p>&nbsp;</p>
+
+    <div fxLayout="row" fxLayout.lt-md="column">
+      <div fxLayout="row" fxLayout.lt-sm="column" fxFlex="50%">
+        <div fxFlex="50%">
+          <p>Input field</p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Standard input field</mat-label>
+              <input matInput placeholder="Placeholder">
+              <mat-hint>Try to input text in the field</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Fill input field</mat-label>
+              <input matInput placeholder="Placeholder">
+              <mat-hint>Try to input text in the field</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Outline input field</mat-label>
+              <input matInput placeholder="Placeholder">
+              <mat-hint>Try to input text in the field</mat-hint>
+            </mat-form-field>
+          </p>
+        </div>
+        <div fxFlex="50%">
+          <p>Datepicker</p>
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <p>Other form fields</p>
+          <p>
+            <mat-form-field>
+              <mat-label>Select form field</mat-label>
+              <mat-select>
+                <mat-option>None</mat-option>
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+                <mat-option value="option4">Option 4</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <mat-label>Textarea form field</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </p>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.lt-sm="column" fxFlex="50%">
+        <div fxFlex="50%">
+          <p>Checkbox</p>
+          <p fxLayout="column">
+            <mat-checkbox>Unchecked</mat-checkbox>
+            <mat-checkbox checked="true">Checked</mat-checkbox>
+            <mat-checkbox checked="true" disabled>Disabled</mat-checkbox>
+          </p>
+          <p>Radio button</p>
+          <p>
+            <mat-radio-group fxLayout="column" fxLayoutGap="10px">
+              <mat-radio-button value="1">Unchecked</mat-radio-button>
+              <mat-radio-button value="2" checked>Checked</mat-radio-button>
+              <mat-radio-button value="3" disabled>Disabled</mat-radio-button>
+            </mat-radio-group>
+          </p>
+        </div>
+        <div fxFlex="50%">
+          <p>Buttons</p>
+          <p><button mat-raised-button>Basic</button></p>
+          <p><button mat-raised-button color="primary">Primary</button></p>
+          <p><button mat-raised-button color="accent">Accent</button></p>
+          <p><button mat-raised-button color="warn">Warn</button></p>
+          <p><button mat-button [matMenuTriggerFor]="menu">Menu</button></p>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-menu #menu="matMenu">
+  <div class="menu-inner">
+    <p>This is a menu with some Material elements.</p>
+    <p><button mat-raised-button color="primary">Primary</button></p>
+    <p><button mat-raised-button color="accent">Accent</button></p>
+    <p><button mat-raised-button color="warn">Warn</button></p>
+</div>
+</mat-menu>
